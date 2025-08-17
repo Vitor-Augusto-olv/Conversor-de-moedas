@@ -1,8 +1,13 @@
 import "./style.css";
 import { rates } from "./data/rates";
+import type { Currency } from "./types";
+import convert from "./convert";
 
 const fromSelect = document.getElementById("from") as HTMLSelectElement;
 const toSelect = document.getElementById("to") as HTMLSelectElement;
+const amountInput = document.getElementById("amount") as HTMLInputElement;
+const convertBtn = document.getElementById("convert") as HTMLButtonElement;
+const result = document.getElementById("result") as HTMLParagraphElement;
 
 function populateSelect(select: HTMLSelectElement) {
   Object.keys(rates).forEach((currency) => {
@@ -17,13 +22,6 @@ populateSelect(fromSelect);
 populateSelect(toSelect);
 fromSelect.value = "USD";
 toSelect.value = "BRL";
-
-import type { Currency } from "./types";
-import convert from "./convert";
-
-const amountInput = document.getElementById("amount") as HTMLInputElement;
-const convertBtn = document.getElementById("convert") as HTMLButtonElement;
-const result = document.getElementById("result") as HTMLParagraphElement;
 
 convertBtn.addEventListener("click", () => {
   const amount = parseFloat(amountInput.value);

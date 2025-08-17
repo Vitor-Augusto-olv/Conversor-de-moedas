@@ -7,8 +7,6 @@ export default function convert(
   to: Currency
 ): number {
   const currentRate = rates[from][to];
-
   const convertedAmount = amount * currentRate;
-
   return +convertedAmount.toFixed(2);
 }
